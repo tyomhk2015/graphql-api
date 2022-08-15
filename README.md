@@ -19,6 +19,45 @@ GraphQL is a specification made by Facebook(or Meta), which allows to get only n
 
 ### <a href="https://www.apollographql.com/docs/apollo-server/">Apollo Server</a>
 
-A server that understands GraphQL, because it implements GraphQL specification.
+A server that understands GraphQL, because it implements GraphQL specification.<br />
+Apollo server can be operated seperately or with existing servers by adding middlewares with graphQL specification.<br />
 
 
+### Error during implementation
+
+```
+    throw Error('Apollo Server requires either an existing schema, modules or typeDefs');
+```
+GraphQL needs to know the shape of the data in advance, but the shape is not given to GraphQL yet.
+
+```
+// server.js
+    const typeDefs = gql``;
+    const server = new ApolloServer({typeDefs});
+    ---
+// terminal
+    throw this.unexpected(keywordToken);
+    ^
+
+    GraphQLError: Syntax Error: Unexpected <EOF>.
+```
+No type definitions are given to `gql`.
+
+```
+    Error: Query root type must be provided.
+```
+'Query' type must be provided inside `gql` backticks.
+
+### GraphQL API
+
+A collection of a lot of types used to send to or receive from the server.
+
+```
+    const typeDefs = gql`
+        type Query {
+            music: String
+            level: String
+        }
+    `;
+```
+The GraphQL type definition written above is like exposing `GET` request URLs with `/music` or `/level`.

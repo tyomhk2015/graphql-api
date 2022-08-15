@@ -4,7 +4,7 @@
   "description": "### API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/tyomhk2015/graphql-api/issues"
   },
-  "homepage": "https://github.com/tyomhk2015/graphql-api#readme"
+  "homepage": "https://github.com/tyomhk2015/graphql-api#readme",
+  "dependencies": {
+    "apollo-server": "^3.10.1",
+    "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
