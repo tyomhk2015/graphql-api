@@ -1,12 +1,12 @@
-## Chunithm Music & GraphQL API
+## Chunithm Characters & GraphQL API
 
-### API
+### API 💡
 
 ・An entity that does the work for you.<br />
 ・A menu with features listed on.<br />
 ・Public features that the client/developer can use without knowing the detail or the workflow of the feature.
 
-### <a href="https://graphql.org/">GraphQL</a>
+### <a href="https://graphql.org/">GraphQL</a> 💡
 
 Solved two problems that REST API were facing, over-fetching and under-fetching.
 
@@ -17,13 +17,13 @@ Solved two problems that REST API were facing, over-fetching and under-fetching.
 
 GraphQL is a specification made by Facebook(or Meta), which allows to get only needed data with a single query.
 
-### <a href="https://www.apollographql.com/docs/apollo-server/">Apollo Server</a>
+### <a href="https://www.apollographql.com/docs/apollo-server/">Apollo Server</a> 💡
 
 A server that understands GraphQL, because it implements GraphQL specification.<br />
 Apollo server can be operated seperately or with existing servers by adding middlewares with graphQL specification.<br />
 
 
-### Error during implementation
+### Errors during implementation 💡
 
 ```
     throw Error('Apollo Server requires either an existing schema, modules or typeDefs');
@@ -48,7 +48,7 @@ No type definitions are given to `gql`.
 ```
 'Query' type must be provided inside `gql` backticks.
 
-### GraphQL API
+### GraphQL API 💡
 
 A collection of a lot of types used to send to or receive from the server.
 
@@ -61,3 +61,31 @@ A collection of a lot of types used to send to or receive from the server.
     `;
 ```
 The GraphQL type definition written above is like exposing `GET` request URLs with `/music` or `/level`.
+
+```
+    REST API: 
+        host/music
+        host/level
+```
+
+📝 For syntax highlighting in VSCode, install `Apollo GraphQL` created by `Apollo GraphQL`.
+
+To add GET request, `Query` type, to add POST request, `Mutation` type is must.
+
+The `Mutation` takes care of `DELETE` or `PUT` requests, which is much simpler than REST.
+
+```
+    type Query {
+        allCharacters: [Character!]
+        character(id: ID!): Character!
+    }
+
+    // What is the exclamation mark on the right side of each type?
+```
+
+`!` means that the type or the variable `CANNOT` be nullable.<br />
+When you are certain that the variable is not null, then adding `!` may be good practice, IMO.<br />
+If no data has been given to `!` arguments, this will invoke errors.
+
+Default settings for variables or types in GraphQL is nullable.<br />
+
