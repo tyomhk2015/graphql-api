@@ -89,3 +89,4 @@ If no data has been given to `!` arguments, this will invoke errors.
 
 Default settings for variables or types in GraphQL is nullable.<br />
 
+In the case of lists, `[]`,`!` will not cause errors if there is no data in the database. Instead, the data will be empty, just like an empty array.
