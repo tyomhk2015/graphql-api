@@ -99,3 +99,39 @@ In the case of lists, `[]`,`!` will not cause errors if there is no data in the 
 
 Schema Definition Language can be used with any programming languages that handles data. (e.g Go, Python, Java and more)
 
+```
+    const resolvers = {
+        Query: {
+            allCharacters() {
+                ...
+            }
+        }
+    }
+    ...
+    const server = new ApolloServer({typeDefs, resolvers});
+```
+
+`Resolvers` is where actually data passed or do operations that user request via GraphQL.
+
+The name of functions in `Query` of `resolvers` have to be same as the ones written inside GraphQL scheme language definition, the part inside of gql``.
+
+```
+    const resolvers = {
+        Query: {
+            character(root, args) {
+                ...
+            }
+        },
+        Mutation: {
+            addCharacter(root, {id, name}) {
+                ...
+            }
+        }
+    }
+```
+
+＊ Don't forget to add the type definitions and resolvers as the parameter of `ApolloServer({})`, otherwise no request will be handled.
+
+To get parameters or arguments from requests, the code must be like the one above, in Node.JS perspective.
+
+Regardless of the language used for the GraphQL, the first argument will always return `root` element, and the second argument, `args`, will return an element containing all arguments that are sent with the request.
