@@ -119,12 +119,12 @@ The name of functions in `Query` of `resolvers` have to be same as the ones writ
     const resolvers = {
         Query: {
             character(root, args) {
-                ...
+                // Your actual logic goes here
             }
         },
         Mutation: {
             addCharacter(root, {id, name}) {
-                ...
+                // Your actual logic goes here
             }
         }
     }
@@ -135,3 +135,6 @@ The name of functions in `Query` of `resolvers` have to be same as the ones writ
 To get parameters or arguments from requests, the code must be like the one above, in Node.JS perspective.
 
 Regardless of the language used for the GraphQL, the first argument will always return `root` element, and the second argument, `args`, will return an element containing all arguments that are sent with the request.
+
+`Query` and `Mutation` of `resolvers` are just conceptual division, which means you can acutally update the data by calling functions inside the `Query`. However, this may cause some maintenance problem.
+

@@ -46,7 +46,11 @@ const resolvers = {
   Mutation: {
     addCharacter(root, {id, name}) {
       console.log(id, name);
-      return null;
+      return {
+        id: id,
+        name: name,
+        stories: "shiny smile story"
+      };
     }
   }
 }
