@@ -90,3 +90,12 @@ If no data has been given to `!` arguments, this will invoke errors.
 Default settings for variables or types in GraphQL is nullable.<br />
 
 In the case of lists, `[]`,`!` will not cause errors if there is no data in the database. Instead, the data will be empty, just like an empty array.
+
+```
+    const typeDefs = gql`
+        ...  <<<< Schema Definition Language section.
+    `;
+```
+
+Schema Definition Language can be used with any programming languages that handles data. (e.g Go, Python, Java and more)
+
