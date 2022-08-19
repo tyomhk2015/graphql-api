@@ -90,3 +90,51 @@ If no data has been given to `!` arguments, this will invoke errors.
 Default settings for variables or types in GraphQL is nullable.<br />
 
 In the case of lists, `[]`,`!` will not cause errors if there is no data in the database. Instead, the data will be empty, just like an empty array.
+
+```
+    const typeDefs = gql`
+        ...  <<<< Schema Definition Language section.
+    `;
+```
+
+Schema Definition Language can be used with any programming languages that handles data. (e.g Go, Python, Java and more)
+
+```
+    const resolvers = {
+        Query: {
+            allCharacters() {
+                ...
+            }
+        }
+    }
+    ...
+    const server = new ApolloServer({typeDefs, resolvers});
+```
+
+`Resolvers` is where actually data passed or do operations that user request via GraphQL.
+
+The name of functions in `Query` of `resolvers` have to be same as the ones written inside GraphQL scheme language definition, the part inside of gql``.
+
+```
+    const resolvers = {
+        Query: {
+            character(root, args) {
+                // Your actual logic goes here
+            }
+        },
+        Mutation: {
+            addCharacter(root, {id, name}) {
+                // Your actual logic goes here
+            }
+        }
+    }
+```
+
+＊ Don't forget to add the type definitions and resolvers as the parameter of `ApolloServer({})`, otherwise no request will be handled.
+
+To get parameters or arguments from requests, the code must be like the one above, in Node.JS perspective.
+
+Regardless of the language used for the GraphQL, the first argument will always return `root` element, and the second argument, `args`, will return an element containing all arguments that are sent with the request.
+
+`Query` and `Mutation` of `resolvers` are just conceptual division, which means you can acutally update the data by calling functions inside the `Query`. However, this may cause some maintenance problem.
+
