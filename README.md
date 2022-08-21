@@ -162,3 +162,4 @@ To document you GraphQL api, add three double quotations, write some description
     }
 ```
 
+`Hasura`, a tool that takes information of your database and make GraphQL API of it, no need to define schema from scratch.
