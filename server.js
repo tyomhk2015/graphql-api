@@ -3,22 +3,19 @@ const { ApolloServer, gql } = require('apollo-server');
 const characters = [{
   id: "1",
   name: "TEMP",
-  stories: ['episode1']
+  stories: []
 }];
 
 // The space between backticks is where Scheme Definition Language defined,
 // telling GraphQL the shapes of data to be used in near future.
 const typeDefs = gql`
+  """
+    This is how you document your GraphQL API
+  """
   type Character {
     id: ID!
     name: String
-    stories: [Story]
-  }
-
-  type Story {
-    id: ID!
-    character: String
-    story: String
+    stories: [String]
   }
 
   type Query {
@@ -27,7 +24,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addCharacter(id: ID!, name: String!): Character
+    addCharacter(id: ID!, name: String!, stories: [String]): Character
     updateCharacter(id: ID!, name: String!): Character
     deleteCharacter(id: ID!): Boolean!
   }
@@ -44,15 +41,15 @@ const resolvers = {
     }
   },
   Mutation: {
-    addCharacter(root, {id, name}) {
-      console.log(id, name);
+    addCharacter(root, {id, name, stories}) {
+      console.log(root, id, name);
       return {
         id: id,
         name: name,
-        stories: "shiny smile story"
+        stories: [String]
       };
     }
-  }
+  },
 }
 
 const server = new ApolloServer({typeDefs, resolvers});

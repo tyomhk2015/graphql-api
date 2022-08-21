@@ -138,3 +138,27 @@ Regardless of the language used for the GraphQL, the first argument will always 
 
 `Query` and `Mutation` of `resolvers` are just conceptual division, which means you can acutally update the data by calling functions inside the `Query`. However, this may cause some maintenance problem.
 
+`root` has data that has same structure as the types defined by scheme definition language. If you need to add a new field by leveraging previous queried data, then the `root` object is what you might need.
+
+```
+// Assuming the queried data has 'id' and 'name' field.
+
+    // Mutation
+    return {
+        newCustomField: root.id + root.name
+    }
+```
+
+To document you GraphQL api, add three double quotations, write some description about API, and close the context with another three double quotations.
+
+```
+    """
+        This is how you document your GraphQL API
+    """
+    type Character {
+        id: ID!
+        name: String
+        stories: [Story]
+    }
+```
+
