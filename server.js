@@ -36,13 +36,12 @@ const resolvers = {
       return characters;
     },
     character(root, args) {
-      console.log(args);
+      console.log('hello \n\n\n byeye');
       return args.toString();
     }
   },
   Mutation: {
     addCharacter(root, {id, name, stories}) {
-      console.log(root, id, name);
       return {
         id: id,
         name: name,
