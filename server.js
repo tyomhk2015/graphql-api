@@ -1,8 +1,14 @@
-const { ApolloServer, gql } = require('apollo-server');
+import { ApolloServer, gql } from 'apollo-server';
+import fetch from 'node-fetch';
 
 const characters = [{
   id: "1",
   name: "TEMP",
+  stories: []
+},
+{
+  id: "2",
+  name: "TTEST",
   stories: []
 }];
 
@@ -18,9 +24,19 @@ const typeDefs = gql`
     stories: [String]
   }
 
+  type Music {
+    id: String
+    catname: String
+    title: String
+    reading: String
+    artist: String
+    image: String
+  }
+
   type Query {
     allCharacters: [Character]
     character(id: ID!): Character
+    allMusics: [Music]
   }
 
   type Mutation {
@@ -38,6 +54,9 @@ const resolvers = {
     character(root, args) {
       console.log('hello \n\n\n byeye');
       return args.toString();
+    },
+    allMusics() {
+      return fetch('https://chunithm.sega.jp/storage/json/music.json').then((response) => response.json());
     }
   },
   Mutation: {
