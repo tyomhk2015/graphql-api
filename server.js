@@ -1,6 +1,9 @@
 import { ApolloServer, gql } from 'apollo-server';
 import fetch from 'node-fetch';
 
+let musics;
+fetch('https://chunithm.sega.jp/storage/json/music.json').then((response) => response.json()).then(data => {musics = data});
+
 const characters = [{
   id: "1",
   name: "TEMP",
@@ -37,6 +40,7 @@ const typeDefs = gql`
     allCharacters: [Character]
     character(id: ID!): Character
     allMusics: [Music]
+    music(id: ID!): Music
   }
 
   type Mutation {
@@ -56,7 +60,10 @@ const resolvers = {
       return args.toString();
     },
     allMusics() {
-      return fetch('https://chunithm.sega.jp/storage/json/music.json').then((response) => response.json());
+      return musics;
+    },
+    music(root, {id}) {
+      return musics.find(music => music.id === id);
     }
   },
   Mutation: {
