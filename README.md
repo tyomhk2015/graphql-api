@@ -1,4 +1,4 @@
-## Chunithm Characters & GraphQL API
+## Chunithm Music & Character API
 
 ### API 💡
 
@@ -163,3 +163,8 @@ To document you GraphQL api, add three double quotations, write some description
 ```
 
 `Hasura`, a tool that takes information of your database and make GraphQL API of it, no need to define schema from scratch.
+
+### Apollo Dev Tools
+
+Allows to inspect and trace your GraphQL operations. (<a href="https://chrome.google.com/webstore/detail/apollo-client-devtools/jdkknkkbebbapilgoeccciglkfbmbnfm">Link</a>)<br />
+Shows exactly the same UI as `Apollo Client` sandbox.
