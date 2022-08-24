@@ -1,4 +1,4 @@
-## Chunithm Characters & GraphQL API
+## Chunithm Music & Character API
 
 ### API 💡
 
