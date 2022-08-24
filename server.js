@@ -56,7 +56,6 @@ const resolvers = {
       return characters;
     },
     character(root, args) {
-      console.log('hello \n\n\n byeye');
       return args.toString();
     },
     allMusics() {
