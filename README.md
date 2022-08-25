@@ -164,6 +164,24 @@ To document you GraphQL api, add three double quotations, write some description
 
 `Hasura`, a tool that takes information of your database and make GraphQL API of it, no need to define schema from scratch.
 
+`Local Only Field` is a field that never goes to API, and only lives in the cache of apollo.<br />
+The opposite of this is `Remote Field`.
+
+```
+    const ALL_MUSICS = gql`
+        # Remote field
+        query getAllMusics {
+            allMusics {
+            id
+            title
+            artist
+            # Local only field
+            isLiked @client
+            }
+        }
+    `;
+```
+
 ### Apollo Dev Tools
 
 Allows to inspect and trace your GraphQL operations. (<a href="https://chrome.google.com/webstore/detail/apollo-client-devtools/jdkknkkbebbapilgoeccciglkfbmbnfm">Link</a>)<br />
